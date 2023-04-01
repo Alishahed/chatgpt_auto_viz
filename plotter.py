@@ -3,12 +3,12 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Load the dataset
-df = pd.read_csv('datasets/98183f57-358c-4915-80f7-1e74e7a439e3.csv')
+# Read the dataset
+df = pd.read_csv('datasets/323bc711-ff94-47b2-9640-ee1ed3fbca54.csv')
 
-# Create the histogram
-fig = px.histogram(df, x='wt', nbins=10)
+# Create the plot
+fig = px.scatter(df, x='wt', y='cyl', title='Weight vs Cylinder')
 
-# Display the plot
+# Display the plot using Streamlit
 st.plotly_chart(fig)
 

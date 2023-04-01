@@ -61,9 +61,9 @@ if uploaded_file is not None:
         response_dataset_description = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                        {"role": "user", "content": st.secrets['chatgpt_queries']['datadescribe_query'] +
+                        {"role": "user", "content": st.secrets['chatgpt_queries']['datadescribe_query1'] +
                                                     st_version[0:200] + "\n" +
-                                                    "can you list the columns with their descriptions? use markdown.\n"
+                                                    st.secrets['chatgpt_queries']['datadescribe_query2']
                                                     }
             ],
             max_tokens = max_token,
@@ -75,15 +75,15 @@ if uploaded_file is not None:
         response_dataset_summary = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                        {"role": "user", "content": st.secrets['chatgpt_queries']['datadescribe_query'] +
+                        {"role": "user", "content": st.secrets['chatgpt_queries']['datadescribe_query1'] +
                                                     st_version[0:200] + "\n" +
-                                                    "can you describe the dataset?\n" +
                                                     plot_description + "\n" +
-                                                    "for this plot What column should I use for the x-axis from dataset?\n" +
-                                                    "for this plot What column should I use for the y-axis from dataset?\n" +
-                                                    "for this plot what type of diagram should I use?\n"+
-                                                    f"please create a script for this plot using streamlit plotly chart. Don't add 'python' at the start of the code.Don't add the usage example.read the dataset from 'datasets/{unique_filename}.csv' to datafram df. \n"
-
+                                                    st.secrets['chatgpt_queries']['datadescribe_query3'] +
+                                                    st.secrets['chatgpt_queries']['datadescribe_query4'] +
+                                                    st.secrets['chatgpt_queries']['datadescribe_query5']+
+                                                    st.secrets['chatgpt_queries']['datadescribe_query6']+
+                                                    f'datasets/{unique_filename}.csv'+ 
+                                                    st.secrets['chatgpt_queries']['datadescribe_query7']
                                                     }
             ],
             max_tokens = max_token,
